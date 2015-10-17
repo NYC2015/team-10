@@ -1,6 +1,7 @@
 package com.codeforgood2015.rocktheearth;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaScannerConnection;
@@ -16,6 +17,7 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -67,7 +69,7 @@ public class GalleryView extends AppCompatActivity {
             return position;
         }
 
-        public View getView(int position, View convertView, ViewGroup parent) {
+        public View getView(final int position, View convertView, ViewGroup parent) {
             final ViewHolder holder;
             if (convertView == null) {
                 holder = new ViewHolder();
@@ -77,7 +79,9 @@ public class GalleryView extends AppCompatActivity {
                 holder.imageview.setOnClickListener( new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        Intent intent = new Intent(GalleryView.this, UsePicture.class);
+                        intent.putExtra("imageDir", images.get(position));
+                        GalleryView.this.startActivity(intent);
                     }
                 });
 
