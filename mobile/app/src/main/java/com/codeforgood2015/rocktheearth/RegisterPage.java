@@ -22,12 +22,15 @@ public class RegisterPage extends AppCompatActivity {
     EditText name, email, zipcode;
 
 
+    DatabaseOperations myDb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        myDb = new DatabaseOperations(this);
 
         final EditText name = (EditText) findViewById(R.id.name_entry);
         final EditText email = (EditText) findViewById(R.id.email_entry);
