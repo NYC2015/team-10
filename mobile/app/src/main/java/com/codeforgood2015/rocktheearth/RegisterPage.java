@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.File;
+
 public class RegisterPage extends AppCompatActivity {
     private Uri fileUri;
 
@@ -31,6 +33,7 @@ public class RegisterPage extends AppCompatActivity {
         final EditText email = (EditText) findViewById(R.id.email_entry);
         final EditText zipcode = (EditText) findViewById(R.id.zip_entry);
 
+        File folder = new File("/sdcard/youfoldername/");
 
 
         Button camera_button = (Button) findViewById(R.id.camera_button);
@@ -41,11 +44,11 @@ public class RegisterPage extends AppCompatActivity {
                 p_name = name.getText().toString();
                 p_email = email.getText().toString();
                 p_zip = zipcode.getText().toString();
-                Toast.makeText(RegisterPage.this, (p_name + p_email + p_zip),
-                        Toast.LENGTH_SHORT).show();
 //                fileUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE); // create a file to save the image
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
-
+                intent.putExtra("username", p_name);
+                intent.putExtra("email", p_email);
+                intent.putExtra("zipcode", p_zip);
                 startActivityForResult(intent, 0);
             }
         });
@@ -57,8 +60,6 @@ public class RegisterPage extends AppCompatActivity {
                 p_name = name.getText().toString();
                 p_email = email.getText().toString();
                 p_zip = zipcode.getText().toString();
-                Toast.makeText(RegisterPage.this, (p_name + p_email + p_zip),
-                        Toast.LENGTH_SHORT).show();
 
             }
         });
