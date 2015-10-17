@@ -1,11 +1,13 @@
 package com.codeforgood2015.rocktheearth;
 
 import android.content.Intent;
+import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,7 +19,7 @@ import java.io.File;
 
 public class RegisterPage extends AppCompatActivity {
     private Uri fileUri;
-
+    private MediaScannerConnection conn;
     String p_name, p_email, p_zip;
     EditText name, email, zipcode;
 
@@ -74,4 +76,7 @@ public class RegisterPage extends AppCompatActivity {
         });
     }
 
+
+
 }
+
