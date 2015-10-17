@@ -32,7 +32,6 @@ public class RegisterPage extends AppCompatActivity {
         final EditText name = (EditText) findViewById(R.id.name_entry);
         final EditText email = (EditText) findViewById(R.id.email_entry);
         final EditText zipcode = (EditText) findViewById(R.id.zip_entry);
-
         File folder = new File("/sdcard/youfoldername/");
 
 
