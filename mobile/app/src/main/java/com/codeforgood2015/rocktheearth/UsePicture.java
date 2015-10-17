@@ -37,8 +37,7 @@ public class UsePicture extends AppCompatActivity {
             imgdir = bundle.getString("imageDir");
         }
         Log.d("bruh", "result: " + imgdir);
-        Toast.makeText(UsePicture.this, (imgdir),
-                Toast.LENGTH_SHORT).show();
+
 
         p_name = bundle.getString("username");
         p_email = bundle.getString("email");
@@ -57,7 +56,7 @@ public class UsePicture extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                msg = (String) parent.getItemAtPosition(position).toString();
+                msg =  parent.getItemAtPosition(position).toString();
             }
 
             @Override

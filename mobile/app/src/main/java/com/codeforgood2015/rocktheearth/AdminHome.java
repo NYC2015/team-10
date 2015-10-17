@@ -29,6 +29,14 @@ public class AdminHome extends AppCompatActivity {
 //            }
 //        });
 
+        Button pushb = (Button) findViewById(R.id.push_data);
+        pushb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(AdminHome.this, "data pushed!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         Button goto_reg = (Button) findViewById(R.id.goto_registration);
         goto_reg.setOnClickListener(new View.OnClickListener() {
             @Override
