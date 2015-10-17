@@ -91,11 +91,11 @@ var server = http.createServer(function(request, response) {
             //an example of processing POST data
             if (request.method=='POST') {
                 var post = qs.parse(buffer);
-                var name = post.title;
-                var email = post.description;
+                var title = post.title;
+                var description = post.description;
                 var zip = post.zip;
 
-                connection.query('INSERT INTO campaign (name, email, zip) VALUES ("' + title + '", "' + description + '", "' + zip + '")', function (err, rows, fields){
+                connection.query('INSERT INTO campaign (title, description, zip) VALUES ("' + title + '", "' + description + '", "' + zip + '")', function (err, rows, fields){
                    if(err) throw err; 
                 });
 
