@@ -31,7 +31,7 @@ public class UsePicture extends AppCompatActivity {
         root = Environment.getExternalStorageDirectory().toString() + "/RocktheEarth";
         myDir = new File(root + "/Logs");
         myDir.mkdirs();
-        myDb = new Database(this, root + "/mySQL/");
+        myDb = new Database(this, root + "/mySQL/entry.db");
         if(bundle.getString("imageDir")!= null)
         {
             imgdir = bundle.getString("imageDir");
