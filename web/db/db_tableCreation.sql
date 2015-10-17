@@ -2,12 +2,12 @@
 USE rocktheearth;
 
 CREATE TABLE IF NOT EXISTS user (
-	pk int unsigned auto_increment primary key, 
+	pk int unsigned auto_increment primary key,
 	isadmin BOOL NOT NULL,
-	name VARCHAR(20) NOT NULL, 
-	password VARCHAR(20) NOT NULL, 
-	email VARCHAR(20) NOT NULL, 
-	zip CHAR(5) NOT NULL, 
+	name VARCHAR(20) NOT NULL,
+	password VARCHAR(20) NOT NULL,
+	email VARCHAR(20) NOT NULL,
+	zip CHAR(5) NOT NULL,
 	phonenumber VARCHAR(20)
 );
 
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS campaign (
 	viewcount int unsigned,
 	donatelink VARCHAR(20),
 	FOREIGN KEY (fkuser)
-		REFERENCES user(pk)	
+		REFERENCES user(pk)
 );
 
 
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS photo (
 	pk int unsigned auto_increment primary key,
 	pathname VARCHAR(20) NOT NULL,
 	fkuser int unsigned,
-	fkcampaign int unsigned, 
+	fkcampaign int unsigned,
 	iscover BOOL,
 	FOREIGN KEY (fkuser)
 		REFERENCES user(pk),
@@ -43,7 +43,12 @@ CREATE TABLE IF NOT EXISTS volunteering (
 	description VARCHAR(500),
 	FOREIGN KEY (fkcampaign)
 		REFERENCES campaign(pk)
-); 
+);
+
+CREATE TABLE IF NOT EXISTS musicevents (
+	schedtime datetime,
+	location varchar(255)
+);
 
 #M2M user to campaign
 CREATE TABLE IF NOT EXISTS usersupport (

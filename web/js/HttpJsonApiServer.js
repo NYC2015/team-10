@@ -87,6 +87,9 @@ var server = http.createServer(function(request, response) {
             }
             response.write(JSON.stringify(jsonObj));
             response.end();
+        } else if (urlObj.pathname === '/api/getevents') {
+            //connection.query('select * from musicevents')
+            
         }
     });
 });
