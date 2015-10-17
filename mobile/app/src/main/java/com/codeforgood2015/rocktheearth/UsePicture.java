@@ -1,6 +1,7 @@
 package com.codeforgood2015.rocktheearth;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
@@ -19,13 +20,18 @@ import java.io.File;
 import java.io.FileOutputStream;
 
 public class UsePicture extends AppCompatActivity {
-    String imgdir, msg, p_name, p_email, p_zip;
+    String imgdir, msg, p_name, p_email, p_zip, root;
+    Database myDb;
+    File myDir;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_use_picture);
         Bundle bundle = getIntent().getExtras();
-
+        root = Environment.getExternalStorageDirectory().toString() + "/RocktheEarth";
+        myDir = new File(root + "/Logs");
+        myDir.mkdirs();
+        myDb = new Database(this, root + "/mySQL/");
         if(bundle.getString("imageDir")!= null)
         {
             imgdir = bundle.getString("imageDir");
@@ -66,22 +72,25 @@ public class UsePicture extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(UsePicture.this, RegisterPage.class);
 
-                String root = Environment.getExternalStorageDirectory().toString() + "/RocktheEarth";
-                File myDir = new File(root + "/RocktheEarth");
-                myDir.mkdirs();
+
                 String fname =  "logs.csv";
                 File file = new File(myDir, fname);
+
+                boolean isInserted = myDb.insertData(p_name, p_email, p_zip);
+
+
+
                 String string = p_name + ", " + p_email + ", " + p_zip + ", " + imgdir + "\n";
                 try {
 
                     FileOutputStream out = new FileOutputStream(file, true);
                     out.write(string.getBytes());
                     out.close();
-                    Toast.makeText(submit_button.getContext(), "File saved!", Toast.LENGTH_SHORT).show();
+
                 } catch (Exception e) {
                     e.printStackTrace();
 //                    outputStream = openFileOutput(filename, Context.MODE_APPEND);
-                    Toast.makeText(submit_button.getContext(), "File not saved!", Toast.LENGTH_SHORT).show();
+                    
                 }
 
                 startActivity(intent);

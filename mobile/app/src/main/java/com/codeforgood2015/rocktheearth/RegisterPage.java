@@ -74,8 +74,6 @@ public class RegisterPage extends AppCompatActivity {
 
 
                 File myDir = new File(root + "/Gallery");
-                Toast.makeText(RegisterPage.this, (myDir.toString()),
-                        Toast.LENGTH_SHORT).show();
                 myDir.mkdirs();
                 Intent intent = new Intent(RegisterPage.this, GalleryView.class);
                 intent.putExtra("username", p_name);
