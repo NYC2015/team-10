@@ -47,6 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/zip_entry"
         android:layout_alignParentRight="true"
+        android:id="@+id/register_button"
         android:text="Register"/>
 
 </RelativeLayout>
