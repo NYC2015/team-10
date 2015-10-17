@@ -6,16 +6,18 @@
     <string name="title_activity_admin_home">AdminHome</string>
 
     <string-array name="messages">
-        <item>I am basic</item>
-        <item>I am fuccboi</item>
-        <item>Bruh this be the dank santa</item>
-        <item>fuccboi 3000</item>
-        <item>Romantic Partner/Date</item>
-        <item>Close Friend</item>
-        <item>Aquaintance</item>
-        <item>Classmate</item>
-        <item>Roommate</item>
-        <item>Stranger</item>
-        <item>Other</item>
+        <item>I like nature</item>
+        <item>I support the environment</item>
+        <item>Please don\'t take my hiking trail</item>
+        <item>Let\'s leave a better place for our children</item>
+
+    </string-array>
+
+    <string-array name="Campaigns">
+        <item>Indian Point Nuclear Plant</item>
+        <item>Colorado Continental Divide</item>
+        <item>Proper review for military proposals</item>
+        <item>Stop the excessive fracking</item>
+
     </string-array>
 </resources>

@@ -11,8 +11,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 import android.os.Environment;
 
@@ -42,6 +45,12 @@ public class RegisterPage extends AppCompatActivity {
         final EditText email = (EditText) findViewById(R.id.email_entry);
         final EditText zipcode = (EditText) findViewById(R.id.zip_entry);
 
+        Spinner campaign_spinner = (Spinner) findViewById(R.id.campaign_spinner);
+        ArrayAdapter<CharSequence> messages = ArrayAdapter.createFromResource(this,
+                R.array.Campaigns, android.R.layout.simple_spinner_item);
+        messages.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        campaign_spinner.setAdapter(messages);
+
 
         Button camera_button = (Button) findViewById(R.id.camera_button);
         camera_button.setOnClickListener(new View.OnClickListener() {
@@ -54,7 +63,7 @@ public class RegisterPage extends AppCompatActivity {
 //                fileUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE); // create a file to save the image
                 File myDir = new File(root + "/Capture");
                 myDir.mkdirs();
-                Long tsLong = System.currentTimeMillis()/1000;
+                Long tsLong = System.currentTimeMillis() / 1000;
                 String ts = tsLong.toString();
                 sfileUri = Uri.fromFile(new File(root + "/Capture/" + ts + ".jpg"));
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, sfileUri);
@@ -75,6 +84,7 @@ public class RegisterPage extends AppCompatActivity {
 
                 File myDir = new File(root + "/Gallery");
                 myDir.mkdirs();
+
                 Intent intent = new Intent(RegisterPage.this, GalleryView.class);
                 intent.putExtra("username", p_name);
                 intent.putExtra("email", p_email);
@@ -83,6 +93,9 @@ public class RegisterPage extends AppCompatActivity {
 
             }
         });
+
+
+
     }
 
     @Override

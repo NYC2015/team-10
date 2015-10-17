@@ -9,6 +9,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_admin_login" tools:context=".AdminLogin">
 
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,6 +18,7 @@
         android:id="@+id/Title"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+    
 
     <EditText
         android:layout_width="fill_parent"
@@ -40,6 +42,6 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/pw_entry"
         android:id="@+id/login_button"
-        android:text="Login"/>
+        android:text="Login" />
 
 </RelativeLayout>
