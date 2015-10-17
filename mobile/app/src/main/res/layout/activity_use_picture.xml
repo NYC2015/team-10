@@ -21,7 +21,8 @@
         android:id="@+id/msgspinner"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
-        android:layout_below="@id/usedImage">
+        android:layout_below="@id/usedImage"
+        android:textColor="@color/white">
     </Spinner>
 
     <Button
@@ -29,6 +30,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/submit_button"
         android:layout_below="@id/msgspinner"
-        android:text="submit"/>
+        android:text="submit"
+        android:textColor="@color/white"
+        android:background="@color/colorPrimaryDark"/>
 
 </RelativeLayout>

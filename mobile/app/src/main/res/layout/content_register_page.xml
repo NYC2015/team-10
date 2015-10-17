@@ -13,10 +13,15 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Register"
         android:id="@+id/register_title"
-        android:text="Registration"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
+        android:textColor="@color/white"
+        />
+
+
 
     <EditText
         android:layout_width="fill_parent"
@@ -25,6 +30,21 @@
         android:hint="name"
         android:singleLine="true"
         android:layout_centerVertical="true"/>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/concerts_scroll"
+        android:layout_above="@id/name_entry">
+        <ListView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/concert_list"
+            >
+
+        </ListView>
+
+    </ScrollView>
 
     <EditText
         android:layout_width="fill_parent"
@@ -50,20 +70,26 @@
         android:layout_below="@+id/zip_entry"
         android:layout_alignParentRight="true"
         android:id="@+id/camera_button"
-        android:text="Take a picture"/>
+        android:text="Take a picture"
+        android:textColor="@color/white"
+        android:background="@color/colorPrimaryDark"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/zip_entry"
         android:layout_toLeftOf="@id/camera_button"
+        android:layout_marginRight="10dp"
         android:id="@+id/stockphoto_button"
-        android:text="Use Stock photo"/>
+        android:text="Use Stock photo"
+        android:textColor="@color/white"
+        android:background="@color/colorPrimaryDark"/>
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:id="@+id/campaign_spinner"></Spinner>
+        android:id="@+id/campaign_spinner"
+        android:textColor="@color/white"></Spinner>
 
 </RelativeLayout>

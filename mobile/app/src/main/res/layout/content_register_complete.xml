@@ -18,7 +18,8 @@
         android:layout_centerVertical="true"
         android:id="@+id/complete_text"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Thank you for your support" />
+        android:text="Thank you for your support!! :)"
+        android:textColor="@color/white"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -26,5 +27,7 @@
         android:id="@+id/complete_button"
         android:layout_below="@id/complete_text"
         android:layout_centerHorizontal="true"
-        android:text="Back to register page"/>
+        android:text="Back to register page"
+        android:textColor="@color/white"
+        android:background="@color/colorPrimaryDark"/>
 </RelativeLayout>
