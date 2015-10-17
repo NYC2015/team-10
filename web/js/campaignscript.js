@@ -12,17 +12,20 @@ app.controller("rockController", function($scope) {
 });
 app.controller("tabsCtrl", function($scope) {
     $scope.tabs = [{
-            title: 'One',
-            url: 'one.tpl.html'
+            title: 'Petition',
+            url: 'petition.html'
         }, {
-            title: 'Two',
-            url: 'two.tpl.html'
+            title: 'Contributors',
+            url: 'contributors.html'
         }, {
-            title: 'Three',
-            url: 'three.tpl.html'
+            title: 'Donate',
+            url: 'donate.html'
+		}, {
+			title: 'Share',
+			url: 'share.html'
     }];
 
-    $scope.currentTab = 'one.tpl.html';
+    $scope.currentTab = 'petition.html';
 
     $scope.onClickTab = function (tab) {
         $scope.currentTab = tab.url;

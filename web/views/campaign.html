@@ -12,13 +12,17 @@
       padding-top: 20px;
       /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
     }
+	#tabs {
+		text-align: center;
+	}
 	#tabs ul {
 		list-style: none;
 		padding: 0;
 		margin: 0;
 	}
 	#tabs li {
-		float: left;
+		
+		display: inline-block;
 		border: 1px solid #000;
 		border-bottom-width: 0;
 		margin: 3px 3px 0px 3px;
@@ -134,23 +138,27 @@
             <div ng-include="currentTab"></div>
         </div>
     </div>
-    <script type="text/ng-template" id="one.tpl.html">
+    <script type="text/ng-template" id="petition.html">
 		<div id="viewOne">
-			<h1>View One</h1>
+			<h1>Petition</h1>
 			<p>Praesent id metus massa, ut blandit odio. Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet. Nunc.</p>
 		</div>
 	</script>
-	
-	<script type="text/ng-template" id="two.tpl.html">
+	<script type="text/ng-template" id="contributors.html">
 		<div id="viewTwo">
-			<h1>View Two</h1>
+			<h1>Contributors</h1>
 			<p>Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu. Class aptent taciti sociosqu.</p>
 		</div>
 	</script>
-	
-	<script type="text/ng-template" id="three.tpl.html">
+	<script type="text/ng-template" id="donate.html">
 		<div id="viewThree">
-			<h1>View Three</h1>
+			<h1>Donate</h1>
+			<p>In pellentesque faucibus vestibulum. Nulla at nulla justo, eget luctus tortor. Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu. Class aptent taciti sociosqu.</p>
+		</div>
+	</script>
+	<script type="text/ng-template" id="share.html">
+		<div id="viewFour">
+			<h1>Share</h1>
 			<p>In pellentesque faucibus vestibulum. Nulla at nulla justo, eget luctus tortor. Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu. Class aptent taciti sociosqu.</p>
 		</div>
 	</script>
