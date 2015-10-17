@@ -4,6 +4,13 @@ RocktheEarth project
 
 
 AWS server
- ec2-23-22-221-215.compute-1.amazonaws.com
 
+* hostname: ec2-23-22-221-215.compute-1.amazonaws.com
+* username: ubuntu
+* password: code4good
+
+MYSQL
+
+* username: root
+* password: password
  
