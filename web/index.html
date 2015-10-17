@@ -13,7 +13,7 @@
 	</head>
 
     <title>
-        QQ I've seen it all now
+        Rock the Earth!
     </title>
 
     <style type="text/css">
@@ -29,7 +29,7 @@
             height: 200px ;
             line-height: 200px ;
             text-align: center ;
-            width: 684px ;
+            width: 100% ;
         }
         ul.photos {
             list-style-type: none ;
@@ -99,30 +99,27 @@
 		</div>
 	<!-- /.container -->
 	</nav>
-
-    <h1>
-        QQ I've seen everything now
-    </h1>
+<br><br><br>
 
     <p>
-        You have {{ photos.size() }} photos in your set.
+        There are {{ photos.size() }} campaigns for you to join!
 
-        <a ng-click="rebuildSet()">Rebuild set</a>.
+        <a ng-click="rebuildSet()">Refresh</a>.
         <a ng-click="clearPhotos()">Clear</a>.
     </p>
 
     <a ng-show="isBoxVisible" ng-click="hideBox()" class="box">
-        Click to make disappear for future usage :)
+        <p style="font-size:6em">Ready to Rock the Earth?</p>
     </a>
 
-    <ul class="photos">
+    <ul class="photos" style="width:100%">
 
         <li ng-repeat="photo in photos" class="photo">
 
             <img
                 ng-src="{{ photo.src }}"
-                width="150"
-                height="150"
+                width="250"
+                height="250"
                 alt="Work pls"
                 />
 

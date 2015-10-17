@@ -52,19 +52,25 @@
 		</div>
 	<!-- /.container -->
 	</nav>
+<br><br><br>
+<div class="container">
+      <form class="form-signin">
+        <h2 class="form-signin-heading" style = "text-align:center">Register Now!</h2>
+        <label for="inputEmail" class="sr-only">Name</label><br>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Name" required autofocus>
+        <label for="inputPassword" class="sr-only">Email</label><br>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Email Address" required>
+        <label for="inputPassword" class="sr-only">Zip Code</label><br>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Zip Code" required>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> I am willing to volunteer and/or donate
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </form>
 
-<h1>Register Here</h1>
-<p>Register with Facebook</p>
-
-<p>Register with Email</p>
-
-<form method="post" action="http://ec2-23-22-221-215.compute-1.amazonaws.com:5000/api/insertshortuser">
-  Name: <input type="text" name="name"><br>
-  Email: <input type="text" name="email"><br>
-  <!--Password: <input type="text" name="password"><br>-->
-  Zip: <input type="text" name="zip"><br>
-  <input type="submit" value="Submit">
-</form>
+    </div>
 
 </body>
 </html>
