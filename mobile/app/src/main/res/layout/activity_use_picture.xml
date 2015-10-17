@@ -7,4 +7,27 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.codeforgood2015.rocktheearth.UsePicture">
 
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:layout_alignParentTop="true"
+        android:id="@+id/usedImage"/>
+
+    <Spinner
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/msgspinner"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/usedImage">
+    </Spinner>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/submit_button"
+        android:layout_below="@id/msgspinner"
+        android:text="submit"/>
+
 </RelativeLayout>

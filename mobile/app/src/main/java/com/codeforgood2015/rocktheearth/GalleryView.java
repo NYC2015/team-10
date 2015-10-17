@@ -69,21 +69,14 @@ public class GalleryView extends AppCompatActivity {
             return position;
         }
 
-        public View getView(final int position, View convertView, ViewGroup parent) {
+        public View getView(int position, View convertView, ViewGroup parent) {
             final ViewHolder holder;
             if (convertView == null) {
                 holder = new ViewHolder();
                 convertView = mInflater.inflate(
                         R.layout.galleryitem, null);
                 holder.imageview = (ImageView) convertView.findViewById(R.id.thumbImage);
-                holder.imageview.setOnClickListener( new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(GalleryView.this, UsePicture.class);
-                        intent.putExtra("imageDir", images.get(position));
-                        GalleryView.this.startActivity(intent);
-                    }
-                });
+
 
                 convertView.setTag(holder);
             }
@@ -94,6 +87,16 @@ public class GalleryView extends AppCompatActivity {
 
             Bitmap myBitmap = BitmapFactory.decodeFile(images.get(position));
             holder.imageview.setImageBitmap(myBitmap);
+            final int index = position;
+            holder.imageview.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(GalleryView.this, UsePicture.class);
+                    intent.putExtra("imageDir", images.get(index));
+
+                    GalleryView.this.startActivity(intent);
+                }
+            });
             return convertView;
         }
     }

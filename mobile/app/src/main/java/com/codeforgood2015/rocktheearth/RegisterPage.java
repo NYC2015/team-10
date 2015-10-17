@@ -1,6 +1,8 @@
 package com.codeforgood2015.rocktheearth;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,6 +17,7 @@ import android.widget.Toast;
 import android.os.Environment;
 
 
+
 import java.io.File;
 
 public class RegisterPage extends AppCompatActivity {
@@ -22,7 +25,8 @@ public class RegisterPage extends AppCompatActivity {
     private MediaScannerConnection conn;
     String p_name, p_email, p_zip;
     EditText name, email, zipcode;
-
+    String root = Environment.getExternalStorageDirectory().toString() + "/RocktheEarth";
+    Uri sfileUri;
 
 //    DatabaseOperations myDb;
 
@@ -48,13 +52,17 @@ public class RegisterPage extends AppCompatActivity {
                 p_email = email.getText().toString();
                 p_zip = zipcode.getText().toString();
 //                fileUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE); // create a file to save the image
-                intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
-                intent.putExtra("username", p_name);
-                intent.putExtra("email", p_email);
-                intent.putExtra("zipcode", p_zip);
+                File myDir = new File(root + "/Capture");
+                myDir.mkdirs();
+                Long tsLong = System.currentTimeMillis()/1000;
+                String ts = tsLong.toString();
+                sfileUri = Uri.fromFile(new File(root + "/Capture/" + ts + ".png"));
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, sfileUri);
                 startActivityForResult(intent, 0);
             }
         });
+
+
 
         Button stockphoto_button = (Button) findViewById(R.id.stockphoto_button);
         stockphoto_button.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +71,7 @@ public class RegisterPage extends AppCompatActivity {
                 p_name = name.getText().toString();
                 p_email = email.getText().toString();
                 p_zip = zipcode.getText().toString();
-                String root = Environment.getExternalStorageDirectory().toString() + "/RocktheEarth";
+
 
                 File myDir = new File(root + "/Gallery");
                 Toast.makeText(RegisterPage.this, (myDir.toString()),
@@ -76,7 +84,19 @@ public class RegisterPage extends AppCompatActivity {
         });
     }
 
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        if (requestCode == 0) {
+            Intent change = new Intent(RegisterPage.this, UsePicture.class);
+            change.putExtra("username", p_name);
+            change.putExtra("email", p_email);
+            change.putExtra("zipcode", p_zip);
+            change.putExtra("imageDir", "captured");
+            Bitmap photo = (Bitmap) data.getExtras().get("data");
+            change.putExtra("capture", photo);
+            startActivity(change);
+        }
+    }
 
 }
 
