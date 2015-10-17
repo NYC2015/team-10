@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -35,7 +33,6 @@ public class RegisterPage extends AppCompatActivity {
         final EditText name = (EditText) findViewById(R.id.name_entry);
         final EditText email = (EditText) findViewById(R.id.email_entry);
         final EditText zipcode = (EditText) findViewById(R.id.zip_entry);
-        File folder = new File("/sdcard/youfoldername/");
 
 
         Button camera_button = (Button) findViewById(R.id.camera_button);
