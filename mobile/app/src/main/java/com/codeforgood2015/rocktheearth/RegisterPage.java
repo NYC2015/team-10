@@ -22,8 +22,8 @@ public class RegisterPage extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-        Button register_button = (Button) findViewById(R.id.register_button);
-        register_button.setOnClickListener(new View.OnClickListener() {
+        Button camera_button = (Button) findViewById(R.id.camera_button);
+        camera_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -34,6 +34,8 @@ public class RegisterPage extends AppCompatActivity {
                 startActivityForResult(intent, 0);
             }
         });
+
+        Button stockphoto_button = (Button) findViewById(R.id.stockphoto_button);
     }
 
 }
