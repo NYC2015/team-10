@@ -101,5 +101,9 @@ public class RegisterPage extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        return;
+    }
 }
 
