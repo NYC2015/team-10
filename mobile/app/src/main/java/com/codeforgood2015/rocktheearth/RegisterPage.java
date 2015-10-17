@@ -61,11 +61,13 @@ public class RegisterPage extends AppCompatActivity {
                 p_name = name.getText().toString();
                 p_email = email.getText().toString();
                 p_zip = zipcode.getText().toString();
-                String root = Environment.getRootDirectory().toString();
-                File myDir = new File(root + "/RocktheEarth");
+                String root = Environment.getExternalStorageDirectory().toString() + "/RocktheEarth";
+
+                File myDir = new File(root + "/Gallery");
+                Toast.makeText(RegisterPage.this, (myDir.toString()),
+                        Toast.LENGTH_SHORT).show();
                 myDir.mkdirs();
                 Intent intent = new Intent(RegisterPage.this, GalleryView.class);
-                intent.putExtra("path", myDir);
                 RegisterPage.this.startActivity(intent);
 
             }
