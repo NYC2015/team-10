@@ -28,10 +28,13 @@ public class GalleryView extends AppCompatActivity {
 
     ArrayList<String> images = new ArrayList<String>();
     File[] listFile;
+    String p_name, p_email, p_zip;
     private ImageAdapter imageAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Bundle bundle = getIntent().getExtras();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gallery);
 
@@ -47,6 +50,10 @@ public class GalleryView extends AppCompatActivity {
         ListView imggrid = (ListView) findViewById(R.id.gallery_grid);
         imageAdapter = new ImageAdapter();
         imggrid.setAdapter(imageAdapter);
+
+        p_name = bundle.getString("username");
+        p_email = bundle.getString("email");
+        p_zip = bundle.getString("zipcode");
 
     }
 
@@ -93,7 +100,9 @@ public class GalleryView extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(GalleryView.this, UsePicture.class);
                     intent.putExtra("imageDir", images.get(index));
-
+                    intent.putExtra("username", p_name);
+                    intent.putExtra("email", p_email);
+                    intent.putExtra("zipcode", p_zip);
                     GalleryView.this.startActivity(intent);
                 }
             });
