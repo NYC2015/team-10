@@ -3,27 +3,6 @@ var urlModule = require('url');
 var mysql = require('mysql');
 var qs = require('querystring');
 var port = parseInt(process.argv[2], 10);
-//var express = require('express');
-//var app = express();
-
-//app.use(express.bodyParser());
-//app.use(express.cookieParser());
-//app.use();
-
-/*
-app.post('/login', function(req, res) {
-    if (!user) {
-      res.render('login.jade', { error: 'Invalid email or password.' });
-    } else {
-      if (req.body.password === user.password) {
-        req.session.user = user;
-        res.redirect('/dashboard');
-      } else {
-        res.render('login.jade', { error: 'Invalid email or password.' });
-      }
-    }
-});
-*/
 
 var connection = mysql.createConnection({
   host     : 'localhost',
@@ -32,13 +11,6 @@ var connection = mysql.createConnection({
   database : 'rocktheearth',
 });
 connection.connect();
-
-/*
-app.post('/api/insertshortuser', function(req, res) {
-    console.log(req.body.name);
-    console.log(req.body.email);
-});
-*/
 
 var server = http.createServer(function(request, response) {
     var buffer = '';
@@ -63,8 +35,18 @@ var server = http.createServer(function(request, response) {
                     response.end();
                 });
         } else if (urlObj.pathname === '/api/getuser') {
-
-
+            var pk = urlObj.query.pk;
+            connection.query('select name, email, zip from campaign where pk=' + pk + ';',
+                function(err, rows, fields) {
+                    if (err) {
+                        throw err;
+                    }
+                    jsonObj.name = rows[0].name;
+                    jsonObj.email = rows[0].email;
+                    jsonObj.zip = rows[0].zip;
+                    response.write(JSON.stringify(jsonObj));
+                    response.end();
+                });
             response.write(JSON.stringify(jsonObj));
             response.end();
         } else if (urlObj.pathname === '/api/insertshortuser') {
@@ -74,17 +56,22 @@ var server = http.createServer(function(request, response) {
                 var name = post.name;
                 var email = post.email;
                 var zip = post.zip;
-
                 connection.query('INSERT INTO user (name, email, zip) VALUES ("' + name + '", "' + email + '", "' + zip + '")', function (err, rows, fields){
-                   if(err) throw err; 
+                   if(err) throw err;
                 });
-
-                console.log('name:' + name);
-                console.log('email:' + email);
+                //console.log('name:' + name);
+                //console.log('email:' + email);
                 //var zip = urlObj.query.zip;
             }
             response.write(JSON.stringify(jsonObj));
             response.end();
+        } else if (urlObj.pathname === 'api/insertimage') {
+            if (request.method=='POST') {
+                //UNSUPPORTED
+
+                response.write(JSON.stringify(jsonObj));
+                response.end();
+            }
         }
     });
 });
