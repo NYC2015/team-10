@@ -28,10 +28,22 @@ app.controller(
 		function buildPhotoSet( size ) {
 			var photos = [];
 			for ( var i = 0 ; i < size ; i++ ) {
-				photos.push({
-					src: ( "img/204.jpg"),
-					href: ( "./views/campaign.html")
-				});
+				if (i == 0) {
+					photos.push({
+						src: ("img/indianpoint.png"),
+						href: ("./views/campaign.html")
+					});
+				} else if(i == 1) {
+					photos.push({
+						src: ("img/yosemite.jpg"),
+						href: ("./views/campaign.html")
+					});
+				} else {
+					photos.push({
+						src: ( "img/204.jpg"),
+						href: ( "./views/campaign.html")
+					});
+				}
 			}
 			return( photos );
 		}
@@ -40,6 +52,7 @@ app.controller(
 
 var myDataRef = new Firebase('https://blinding-heat-105.firebaseio.com');
 //var myDataRef = new Firebase('https://ugvkexm8jyc.firebaseio-demo.com/');
+/*
 myDataRef.on('child_added', function(snapshot) {
 	var message = snapshot.val();
 	displayChatMessage(message.name, message.text);
@@ -48,3 +61,4 @@ function displayChatMessage(name, text) {
 	$('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
 	$('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
 };
+*/

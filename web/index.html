@@ -23,7 +23,8 @@
             text-decoration: underline ;
         }
         a.box {
-            background-color: #FAFAFA ;
+            background-color: #94C9A9 ;
+			color: #FFFFFF;
             border: 1px solid #CCCCCC ;
             display: block ;
             height: 200px ;
@@ -31,6 +32,12 @@
             text-align: center ;
             width: 100% ;
         }
+		.menu {
+			text-align: center;
+		}
+		ul {
+			display: inline-table;
+		}
         ul.photos {
             list-style-type: none ;
             margin: 16px 0px 16px 0px ;
@@ -44,6 +51,7 @@
             height: 0px ;
         }
         li.photo {
+			display: inline;
             background-color: #FAFAFA ;
             border: 1px solid #CCCCCC ;
             border-radius: 4px 4px 4px 4px ;
@@ -99,35 +107,38 @@
 		</div>
 	<!-- /.container -->
 	</nav>
-<br><br><br>
+	<br>
 
-    <p>
-        There are {{ photos.size() }} campaigns for you to join!
+    <a ng-show="isBoxVisible" ng-click="hideBox()" class="box">
+        <p style="font-size:6em">Ready to Rock the Earth?</p>
+    </a>
+	<hr>
+    <p style="text-align:center">
+        See anything you like? Click for more info.
 
         <a ng-click="rebuildSet()">Refresh</a>.
         <a ng-click="clearPhotos()">Clear</a>.
     </p>
 
-    <a ng-show="isBoxVisible" ng-click="hideBox()" class="box">
-        <p style="font-size:6em">Ready to Rock the Earth?</p>
-    </a>
+	<div class="menu">
+		<ul class="photos" style="width:100%">
 
-    <ul class="photos" style="width:100%">
+			<li ng-repeat="photo in photos" class="photo">
 
-        <li ng-repeat="photo in photos" class="photo">
+				<a href="./views/campaign.html">
+				<img
+					ng-src="{{ photo.src }}"
+					width="250"
+					height="250"
+					alt="Work pls"
+					/>
+				</a>
 
-			<a href="./views/campaign.html">
-            <img
-                ng-src="{{ photo.src }}"
-                width="250"
-                height="250"
-                alt="Work pls"
-                />
-			</a>
+			</li>
 
-        </li>
-
-    </ul>
+		</ul>
+	</div>
+	
 
 </body>
 </html>
