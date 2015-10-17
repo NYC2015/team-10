@@ -51,7 +51,7 @@ app.controller(
 				var version = ( now + i );
 				photos.push({
 					id: ( i + 1 ),
-					src: ( "christina-cox-" + index + ".jpg?v=" + version )
+					src: ( "img/204.jpg")
 				});
 			}
 			return( photos );
