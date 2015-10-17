@@ -31,31 +31,25 @@
         android:singleLine="true"
         android:layout_centerVertical="true"/>
 
-    <ScrollView
+    <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/concerts_scroll"
-        android:layout_above="@id/name_entry">
-        <ListView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/concert_list"
-            >
-
-        </ListView>
-
-    </ScrollView>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Concerts in the near future"
-        android:id="@+id/Concerts"
-        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/name_entry"
+        android:layout_alignParentRight="true"
+        android:id="@+id/fb_button"
+        android:text="Sign up through Facebook"
         android:textColor="@color/white"
-        android:layout_above="@id/concerts_scroll"
-        />
+        android:background="@color/blue"/>
+
+    <Spinner
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/campaign_spinner"
+        android:textColor="@color/white"
+        android:layout_above="@+id/fb_button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"></Spinner>
+
 
     <EditText
         android:layout_width="fill_parent"
@@ -96,11 +90,34 @@
         android:textColor="@color/white"
         android:background="@color/colorPrimaryDark"/>
 
-    <Spinner
+
+
+
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/campaign_spinner"
-        android:textColor="@color/white"></Spinner>
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Concerts in the near future"
+        android:id="@+id/Concerts"
+        android:layout_below="@id/stockphoto_button"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/concerts_scroll"
+        android:layout_below="@id/Concerts">
+        <ListView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/concert_list"
+            >
+
+        </ListView>
+
+    </ScrollView>
 
 </RelativeLayout>

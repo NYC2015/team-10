@@ -58,6 +58,24 @@ public class RegisterPage extends AppCompatActivity {
 
 
         Button camera_button = (Button) findViewById(R.id.camera_button);
+        Button fb_button = (Button) findViewById(R.id.fb_button);
+        fb_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                p_name = name.getText().toString();
+                p_email = email.getText().toString();
+                p_zip = zipcode.getText().toString();
+//                fileUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE); // create a file to save the image
+                File myDir = new File(root + "/Capture");
+                myDir.mkdirs();
+                Long tsLong = System.currentTimeMillis() / 1000;
+                String ts = tsLong.toString();
+                sfileUri = Uri.fromFile(new File(root + "/Capture/" + ts + ".jpg"));
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, sfileUri);
+                startActivityForResult(intent, 0);
+            }
+        });
         camera_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
