@@ -73,6 +73,12 @@ var server = http.createServer(function(request, response) {
                 var post = qs.parse(buffer);
                 var name = post.name;
                 var email = post.email;
+                var zip = post.zip;
+
+                connection.query('INSERT INTO user (name, email, zip) VALUES ("' + name + '", "' + email + '", "' + zip + '")', function (err, rows, fields){
+                   if(err) throw err; 
+                });
+
                 console.log('name:' + name);
                 console.log('email:' + email);
                 //var zip = urlObj.query.zip;
