@@ -102,6 +102,7 @@ var server = http.createServer(function(request, response) {
             }
             response.write(JSON.stringify(jsonObj));
             response.end();
+        }
     });
 });
 server.listen(port);
