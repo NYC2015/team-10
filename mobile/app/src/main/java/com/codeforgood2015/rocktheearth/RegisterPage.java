@@ -4,14 +4,14 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.os.Environment;
+
 
 import java.io.File;
 
@@ -22,7 +22,7 @@ public class RegisterPage extends AppCompatActivity {
     EditText name, email, zipcode;
 
 
-    DatabaseOperations myDb;
+//    DatabaseOperations myDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +30,11 @@ public class RegisterPage extends AppCompatActivity {
         setContentView(R.layout.activity_register_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        myDb = new DatabaseOperations(this);
+//        myDb = new DatabaseOperations(this);
 
         final EditText name = (EditText) findViewById(R.id.name_entry);
         final EditText email = (EditText) findViewById(R.id.email_entry);
         final EditText zipcode = (EditText) findViewById(R.id.zip_entry);
-        File folder = new File("/sdcard/youfoldername/");
 
 
         Button camera_button = (Button) findViewById(R.id.camera_button);
@@ -62,6 +61,14 @@ public class RegisterPage extends AppCompatActivity {
                 p_name = name.getText().toString();
                 p_email = email.getText().toString();
                 p_zip = zipcode.getText().toString();
+                String root = Environment.getExternalStorageDirectory().toString() + "/RocktheEarth";
+
+                File myDir = new File(root + "/Gallery");
+                Toast.makeText(RegisterPage.this, (myDir.toString()),
+                        Toast.LENGTH_SHORT).show();
+                myDir.mkdirs();
+                Intent intent = new Intent(RegisterPage.this, GalleryView.class);
+                RegisterPage.this.startActivity(intent);
 
             }
         });
