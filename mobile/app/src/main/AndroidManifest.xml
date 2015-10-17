@@ -23,6 +23,16 @@
             android:label="@string/title_activity_register_page"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <activity
+            android:name=".register_complete"
+            android:label="@string/title_activity_register_complete"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".AdminHome"
+            android:label="@string/title_activity_admin_home"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
     </application>
 
 </manifest>
