@@ -61,7 +61,9 @@ var server = http.createServer(function(request, response) {
                 });
                 //console.log('name:' + name);
                 //console.log('email:' + email);
-                //var zip = urlObj.query.zip;
+                //response.writeHead(301,
+                //    {Location: '/'});
+                //response.end();
             }
             response.write(JSON.stringify(jsonObj));
             response.end();
