@@ -1,23 +1,19 @@
 package com.codeforgood.database;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+
 public class MainActivity extends AppCompatActivity {
-
     Database myDb;
-    EditText editName, editEmail, editZip;
-    Button enter;
-
+    EditText editName,editSurname,editMarks;
+    Button btnAddData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,28 +21,28 @@ public class MainActivity extends AppCompatActivity {
         myDb = new Database(this);
 
         editName = (EditText) findViewById(R.id.editText_name);
-        editEmail = (EditText) findViewById(R.id.editText_email);
-        editZip = (EditText) findViewById(R.id.editText_zipcode);
-        enter = (Button) findViewById(R.id.button);
+        editSurname = (EditText)findViewById(R.id.editText_email);
+        editMarks = (EditText)findViewById(R.id.editText_zipcode);
+        btnAddData = (Button)findViewById(R.id.button_add);
         AddData();
     }
+
     public  void AddData() {
-        enter.setOnClickListener(
+        btnAddData.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         boolean isInserted = myDb.insertData(editName.getText().toString(),
-                                editEmail.getText().toString(),
-                                editZip.getText().toString());
-                        if (isInserted = true)
-                            Toast.makeText(MainActivity.this, "Data Inserted", Toast.LENGTH_LONG).show();
+                                editSurname.getText().toString(),
+                                editMarks.getText().toString() );
+                        if(isInserted =true)
+                            Toast.makeText(MainActivity.this,"Data Inserted",Toast.LENGTH_LONG).show();
                         else
-                            Toast.makeText(MainActivity.this, "Data not Inserted", Toast.LENGTH_LONG).show();
+                            Toast.makeText(MainActivity.this,"Data not Inserted",Toast.LENGTH_LONG).show();
                     }
                 }
         );
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
