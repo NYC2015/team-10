@@ -3,6 +3,8 @@ var urlModule = require('url');
 var mysql = require('mysql');
 var qs = require('querystring');
 var port = parseInt(process.argv[2], 10);
+var mv = require('mv');
+var path = require('path');
 //var express = require('express');
 //var app = express();
 
@@ -85,7 +87,21 @@ var server = http.createServer(function(request, response) {
             }
             response.write(JSON.stringify(jsonObj));
             response.end();
-        }
+        } else if (urlObj.pathname === '/api/insertcampaign') {
+            //an example of processing POST data
+            if (request.method=='POST') {
+                var post = qs.parse(buffer);
+                var name = post.title;
+                var email = post.description;
+                var zip = post.zip;
+
+                connection.query('INSERT INTO campaign (name, email, zip) VALUES ("' + title + '", "' + description + '", "' + zip + '")', function (err, rows, fields){
+                   if(err) throw err; 
+                });
+
+            }
+            response.write(JSON.stringify(jsonObj));
+            response.end();
     });
 });
 server.listen(port);
