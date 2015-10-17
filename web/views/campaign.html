@@ -25,6 +25,10 @@
 		overflow-y: scroll;
 		background: ivory;
 	}
+	.active_tab {
+		background-color: #FFF;
+		color: #000;
+	}
 	#tabs {
 		text-align: center;
 	}
@@ -48,10 +52,7 @@
 		clear: both;
 		padding: 0 1em;
 	}
-	.active_tab {
-		background-color: #FFF;
-		color: #000;
-	}
+
   </style>
 </head>
 
@@ -107,7 +108,7 @@
 	<!-- Portfolio Item Row -->
 	<div class="row">
 		<div class="col-md-8">
-			<img class="img-responsive" src={{img}} alt="test" />
+			<img class="img-responsive" ng-src={{img}} alt="test" />
 		</div>
 		<div class="col-md-4">
 			<div id="campaign-description">
@@ -147,7 +148,7 @@
 		<ul>
 			<li ng-repeat="tab in tabs" 
 				ng-class="{active_tab:isActiveTab(tab.url)}" 
-				ng-click="onClickTab(tab)">{{tab.title}}</li>
+				ng-click="onClickTab($event)">{{tab.title}}</li>
 		</ul>
 		<div id="mainView">
 			<div ng-include="currentTab"></div>

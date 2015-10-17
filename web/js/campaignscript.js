@@ -27,13 +27,16 @@ app.controller("tabsCtrl", function($scope) {
 
     $scope.currentTab = 'petition.html';
 
-    $scope.onClickTab = function (tab) {
-        $scope.currentTab = tab.url;
+    $scope.onClickTab = function (e) {
+        //$(e.target).addClass('active_tab');
+		$(e.target).css('background-color', 'red');
     }
     
-    $scope.isActiveTab = function(tabUrl) {
-		console.log(tabUrl);
-        return tabUrl == $scope.currentTab;
+    $scope.isActiveTab = function(e) {
+		console.log(this);
+		$(e.target).addClass('active_tab');
+        //return tabUrl == $scope.currentTab;
+		
     }
 });
 app.controller("petition-controller", function( $scope ) {
