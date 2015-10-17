@@ -6,12 +6,19 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class AdminLogin extends AppCompatActivity {
+    String admin_username, admin_password;
+    EditText username, password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,17 +28,23 @@ public class AdminLogin extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
+        username = (EditText) findViewById(R.id.id_entry);
+        password = (EditText) findViewById(R.id.pw_entry);
 
         Button login_button = (Button) findViewById(R.id.login_button);
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(AdminLogin.this, RegisterPage.class);
+                Intent i = new Intent(AdminLogin.this, AdminHome.class);
+                admin_username = username.getText().toString();
+                admin_password = password.getText().toString();
+                Toast.makeText(AdminLogin.this, (admin_username + admin_password),
+                        Toast.LENGTH_SHORT).show();
                 AdminLogin.this.startActivity(i);
             }
         });
-    }
 
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

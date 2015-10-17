@@ -10,4 +10,21 @@
     tools:showIn="@layout/activity_admin_home"
     tools:context="com.codeforgood2015.rocktheearth.AdminHome">
 
+
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/push_data"
+        android:text="push"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/goto_registration"
+        android:text="go to registration"
+        android:layout_below="@id/push_data"/>
+
+
 </RelativeLayout>

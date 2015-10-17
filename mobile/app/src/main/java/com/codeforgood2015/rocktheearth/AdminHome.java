@@ -1,11 +1,15 @@
 package com.codeforgood2015.rocktheearth;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 public class AdminHome extends AppCompatActivity {
 
@@ -24,6 +28,16 @@ public class AdminHome extends AppCompatActivity {
 //                        .setAction("Action", null).show();
 //            }
 //        });
+
+        Button goto_reg = (Button) findViewById(R.id.goto_registration);
+        goto_reg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(AdminHome.this, RegisterPage.class);
+
+                AdminHome.this.startActivity(i);
+            }
+        });
     }
 
 }
