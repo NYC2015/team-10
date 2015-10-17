@@ -23,18 +23,12 @@
 
 
 
-    <EditText
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/name_entry"
-        android:hint="name"
-        android:singleLine="true"
-        android:layout_centerVertical="true"/>
+
 
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/name_entry"
+        android:layout_below="@+id/campaign_spinner"
         android:layout_alignParentRight="true"
         android:id="@+id/fb_button"
         android:text="Sign up through Facebook"
@@ -46,11 +40,17 @@
         android:layout_height="wrap_content"
         android:id="@+id/campaign_spinner"
         android:textColor="@color/white"
-        android:layout_above="@+id/fb_button"
+        android:layout_below="@+id/about_button"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"></Spinner>
 
-
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/name_entry"
+        android:hint="name"
+        android:singleLine="true"
+        android:layout_below="@id/fb_button"/>
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -76,6 +76,7 @@
         android:layout_alignParentRight="true"
         android:id="@+id/camera_button"
         android:text="Take a picture"
+        android:layout_marginBottom="50dp"
         android:textColor="@color/white"
         android:background="@color/colorPrimaryDark"/>
 
@@ -125,8 +126,9 @@
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:background="@color/colorPrimaryDark"
-        android:layout_below="@id/concerts_scroll"
-        android:text="our website"
+        android:layout_below="@id/register_title"
+        android:text="About us"
+        android:layout_marginTop="50dp"
         android:id="@+id/about_button"/>
 
 
