@@ -10,13 +10,13 @@ mainApp.controller('somethingController', function($scope) {
 mainApp.config(['$routeProvider', function($routeProvider) {
 	$routeProvider.
 	when('/event', {
-	  templateUrl: 'event.html', controller: 'eventController'
+	  templateUrl: '/views/event.html', controller: 'eventController'
 	}).
 	when('/something', {
-	  templateUrl: 'something.html', controller: 'somethingController'
+	  templateUrl: '/views/something.html', controller: 'somethingController'
 	}).
 	otherwise({
-	  redirectTo: 'index.html'
+	  redirectTo: '/'
 	});
 	
 }]);
