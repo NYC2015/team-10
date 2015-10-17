@@ -1,0 +1,39 @@
+? = optional (nullable)
+M2M = many-to-many
+fk = foreign key
+pk = primary key
+
+//these are created for every "petition" and updated when user signs up later
+//makers use same table but have "admin" flag turned on
+user
+	pk				int
+	isadmin			bool
+	name			varchar
+	password?		varchar		//blank if user never signs up, should be hash
+	phone?			varchar
+	email			varchar
+	zip				varchar
+	
+	scampaigns	M2M campaign		//campaigns that this user supports
+	followers	M2M user			//friends of this user
+	vchoices	M2M volunteering	//choices when volunteering
+	
+//only created by users with "isadmin" flag on
+campaign
+	maker			int, fk User
+	title			varchar
+	description		varchar
+	cpicture		fk OR M2M photo if multiple
+	donatelink?		varchar			//URL to external site
+	
+//each entity is for a separate photo uploaded to site
+photo
+	pathname		varchar		//specific to filesystem
+	user_fk?		int, fk user		//linked to user if "petition", but is optional
+	campaign_fk		int, fk campaign	//linked to whatever relevant campaign
+	
+//each entity is a volunteering event set up by 
+volunteering
+	campaign_fk		int, fk campaign
+	description		varchar
+	
