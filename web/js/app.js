@@ -1,10 +1,10 @@
 var mainApp = angular.module("mainApp", ['ngRoute']);
          
 mainApp.controller('eventController', function($scope) {
-	$scope.message = "This page will be used to display add student form";
+	$scope.message = "This page will be used to display a specific event";
 });      
 mainApp.controller('somethingController', function($scope) {
-	$scope.message = "This page will be used to display all the students";
+	$scope.message = "This page will be used to display something else (admin panel?)";
 });
 
 mainApp.config(['$routeProvider', function($routeProvider) {
