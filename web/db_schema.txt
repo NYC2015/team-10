@@ -12,28 +12,32 @@ user
 	password?		varchar		//blank if user never signs up, should be hash
 	phone?			varchar
 	email			varchar
-	zip				varchar
-	
-	scampaigns	M2M campaign		//campaigns that this user supports
-	followers	M2M user			//friends of this user
-	vchoices	M2M volunteering	//choices when volunteering
-	
+	zip				int
+		
 //only created by users with "isadmin" flag on
 campaign
+	pk				int
 	maker			int, fk User
 	title			varchar
 	description		varchar
-	cpicture		fk OR M2M photo if multiple
+	zip				int				//for proximity filter
+	viewcount		int				//for popularity filter
 	donatelink?		varchar			//URL to external site
 	
 //each entity is for a separate photo uploaded to site
 photo
+	pk				int
 	pathname		varchar		//specific to filesystem
 	user_fk?		int, fk user		//linked to user if "petition", but is optional
 	campaign_fk		int, fk campaign	//linked to whatever relevant campaign
+	iscover			bool		//if uploaded by admin during creation of campaign page
 	
 //each entity is a volunteering event set up by 
 volunteering
+	pk				int
 	campaign_fk		int, fk campaign
 	description		varchar
 	
+usersupport	M2M user to campaign		//campaigns that this user supports
+userfriends	M2M user to user			//friends of this user
+uservolunteer	M2M user to volunteering	//choices when volunteering
