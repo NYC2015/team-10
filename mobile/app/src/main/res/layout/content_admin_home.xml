@@ -17,14 +17,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/push_data"
-        android:text="push"/>
+        android:text="push"
+        android:textColor="@color/white"
+        android:background="@color/colorPrimaryDark"
+        android:layout_marginBottom="10dp"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/goto_registration"
         android:text="go to registration"
-        android:layout_below="@id/push_data"/>
+        android:layout_below="@id/push_data"
+        android:textColor="@color/white"
+        android:background="@color/colorPrimaryDark"/>
 
 
 </RelativeLayout>

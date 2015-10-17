@@ -1,5 +1,6 @@
 package com.codeforgood2015.rocktheearth;
 
+import android.app.Application;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -15,6 +16,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.Toast;
 import android.os.Environment;
@@ -22,6 +25,8 @@ import android.os.Environment;
 
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RegisterPage extends AppCompatActivity {
     private Uri fileUri;
@@ -71,7 +76,18 @@ public class RegisterPage extends AppCompatActivity {
             }
         });
 
-
+        ListView concert_list = (ListView) findViewById(R.id.concert_list);
+        List<String> concerts = new ArrayList<String>();
+        concerts.add("Emancipator Ensemble, 10/17");
+        concerts.add("Dave Matthes Band, 10/17");
+        concerts.add("Xavier Rudd, 10/20");
+        concerts.add("The String Cheese Incident, 10/23");
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_list_item_1,
+                concerts );
+        ScrollView concert_scroll = (ScrollView) findViewById(R.id.concerts_scroll);
+        concert_list.setAdapter(arrayAdapter);
 
         Button stockphoto_button = (Button) findViewById(R.id.stockphoto_button);
         stockphoto_button.setOnClickListener(new View.OnClickListener() {
