@@ -27,28 +27,38 @@ app.controller("tabsCtrl", function($scope) {
 
     $scope.currentTab = 'petition.html';
 
-    $scope.onClickTab = function (tab) {
-        $scope.currentTab = tab.url;
+    $scope.onClickTab = function (e) {
+        //$(e.target).addClass('active_tab');
+		$(e.target).css('background-color', 'red');
     }
     
-    $scope.isActiveTab = function(tabUrl) {
-        return tabUrl == $scope.currentTab;
+    $scope.isActiveTab = function(e) {
+		console.log(this);
+		$(e.target).addClass('active_tab');
+        //return tabUrl == $scope.currentTab;
+		
     }
 });
+app.controller("petition-controller", function( $scope ) {
+	//var myDataRef = new Firebase('https://blinding-heat-105.firebaseio.com');
+	var myDataRef = new Firebase('https://ugvkexm8jyc.firebaseio-demo.com/');
+	myDataRef.on('child_added', function(snapshot) {
+		var message = snapshot.val();
+		displayChatMessage(message.name, message.text);
+	});
+	function displayChatMessage(name, text) {
+		$('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
+		$('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+	};
+	$scope.addToDatabase = function( e ){
+		if (e.keyCode == 13) {
+			var name = $('#nameInput').val();
+			var text = $('#messageInput').val();
+			myDataRef.push({name: name, text: text});
+			$('#messageInput').val('');
+		}
+	};
+});
 
-/*
-[
-	{
-		title: "asdasd",
-		asdasdasd: "wasdasd",
-		...
-		...
-		
-	}, {
-		asdasdasd: "asdasd",
-		....
-		...
-		
-	}
-]
-*/
+
+

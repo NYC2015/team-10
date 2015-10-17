@@ -38,8 +38,6 @@ public class AdminLogin extends AppCompatActivity {
                 Intent i = new Intent(AdminLogin.this, AdminHome.class);
                 admin_username = username.getText().toString();
                 admin_password = password.getText().toString();
-                Toast.makeText(AdminLogin.this, (admin_username + admin_password),
-                        Toast.LENGTH_SHORT).show();
                 AdminLogin.this.startActivity(i);
             }
         });
