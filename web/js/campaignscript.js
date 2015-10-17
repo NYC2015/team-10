@@ -10,3 +10,20 @@ app.controller("rockController", function($scope){
   $scope.petitioner_number = 234
   $scope.footer = "Team 10 & Rock The Earth 2015";
 });
+
+/*
+[
+	{
+		title: "asdasd",
+		asdasdasd: "wasdasd",
+		...
+		...
+		
+	}, {
+		asdasdasd: "asdasd",
+		....
+		...
+		
+	}
+]
+*/
