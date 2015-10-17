@@ -120,4 +120,15 @@
 
     </ScrollView>
 
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:background="@color/colorPrimaryDark"
+        android:layout_below="@id/concerts_scroll"
+        android:text="our website"
+        android:id="@+id/about_button"/>
+
+
+
 </RelativeLayout>

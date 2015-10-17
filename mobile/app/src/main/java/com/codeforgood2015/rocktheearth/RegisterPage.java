@@ -128,11 +128,20 @@ public class RegisterPage extends AppCompatActivity {
             }
         });
 
+        Button about_button = (Button) findViewById(R.id.about_button);
+        about_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.rocktheearth.org"));
+
+                startActivity(browserIntent);
+            }
+        });
 
 
-    }
+        }
 
-    @Override
+        @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         if (requestCode == 0) {
             Intent change = new Intent(RegisterPage.this, UsePicture.class);
