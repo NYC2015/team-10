@@ -15,9 +15,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ListView;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 public class GalleryView extends AppCompatActivity {
     private static final String FILE_TYPE = "images/*";
@@ -40,7 +42,7 @@ public class GalleryView extends AppCompatActivity {
             images.add(listFile[i].getAbsolutePath());
         }
 
-        GridView imggrid = (GridView) findViewById(R.id.gallery_grid);
+        ListView imggrid = (ListView) findViewById(R.id.gallery_grid);
         imageAdapter = new ImageAdapter();
         imggrid.setAdapter(imageAdapter);
 
@@ -66,12 +68,18 @@ public class GalleryView extends AppCompatActivity {
         }
 
         public View getView(int position, View convertView, ViewGroup parent) {
-            ViewHolder holder;
+            final ViewHolder holder;
             if (convertView == null) {
                 holder = new ViewHolder();
                 convertView = mInflater.inflate(
                         R.layout.galleryitem, null);
                 holder.imageview = (ImageView) convertView.findViewById(R.id.thumbImage);
+                holder.imageview.setOnClickListener( new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                });
 
                 convertView.setTag(holder);
             }

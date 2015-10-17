@@ -39,6 +39,8 @@
         </activity>
         <activity android:name=".GalleryView" >
         </activity>
+        <activity android:name=".UsePicture" >
+        </activity>
     </application>
 
 </manifest>
