@@ -56,7 +56,7 @@ public class RegisterPage extends AppCompatActivity {
                 myDir.mkdirs();
                 Long tsLong = System.currentTimeMillis()/1000;
                 String ts = tsLong.toString();
-                sfileUri = Uri.fromFile(new File(root + "/Capture/" + ts + ".png"));
+                sfileUri = Uri.fromFile(new File(root + "/Capture/" + ts + ".jpg"));
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, sfileUri);
                 startActivityForResult(intent, 0);
             }
@@ -78,6 +78,9 @@ public class RegisterPage extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
                 myDir.mkdirs();
                 Intent intent = new Intent(RegisterPage.this, GalleryView.class);
+                intent.putExtra("username", p_name);
+                intent.putExtra("email", p_email);
+                intent.putExtra("zipcode", p_zip);
                 RegisterPage.this.startActivity(intent);
 
             }
@@ -91,12 +94,16 @@ public class RegisterPage extends AppCompatActivity {
             change.putExtra("username", p_name);
             change.putExtra("email", p_email);
             change.putExtra("zipcode", p_zip);
-            change.putExtra("imageDir", "captured");
-            Bitmap photo = (Bitmap) data.getExtras().get("data");
-            change.putExtra("capture", photo);
+            change.putExtra("imageDir", sfileUri.toString().substring(7, sfileUri.toString().length()));
+            Log.d("bruh", sfileUri.toString().substring(7, sfileUri.toString().length()));
+
             startActivity(change);
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        return;
+    }
 }
 
