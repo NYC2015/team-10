@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.os.Environment;
+
 
 import java.io.File;
 
@@ -20,7 +22,7 @@ public class RegisterPage extends AppCompatActivity {
     EditText name, email, zipcode;
 
 
-    DatabaseOperations myDb;
+//    DatabaseOperations myDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +30,7 @@ public class RegisterPage extends AppCompatActivity {
         setContentView(R.layout.activity_register_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        myDb = new DatabaseOperations(this);
+//        myDb = new DatabaseOperations(this);
 
         final EditText name = (EditText) findViewById(R.id.name_entry);
         final EditText email = (EditText) findViewById(R.id.email_entry);
@@ -59,6 +61,12 @@ public class RegisterPage extends AppCompatActivity {
                 p_name = name.getText().toString();
                 p_email = email.getText().toString();
                 p_zip = zipcode.getText().toString();
+                String root = Environment.getRootDirectory().toString();
+                File myDir = new File(root + "/RocktheEarth");
+                myDir.mkdirs();
+                Intent intent = new Intent(RegisterPage.this, GalleryView.class);
+                intent.putExtra("path", myDir);
+                RegisterPage.this.startActivity(intent);
 
             }
         });
