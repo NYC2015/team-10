@@ -23,13 +23,23 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:hint="username"
+        android:singleLine="true"
         android:id="@+id/id_entry"/>
 
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:hint="password"
+        android:inputType="textPassword"
         android:layout_below="@id/id_entry"
         android:id="@+id/pw_entry"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/pw_entry"
+        android:id="@+id/login_button"
+        android:text="Login"/>
 
 </RelativeLayout>
