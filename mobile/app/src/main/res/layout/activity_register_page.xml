@@ -17,6 +17,6 @@
 
     <include layout="@layout/content_register_page" />
 
-    
+
 
 </android.support.design.widget.CoordinatorLayout>
