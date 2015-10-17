@@ -1,14 +1,16 @@
 var http = require('http');
 var urlModule = require('url');
 var mysql = require('mysql');
+var qs = require('querystring');
+var port = parseInt(process.argv[2], 10);
 //var express = require('express');
 //var app = express();
-var port = parseInt(process.argv[2], 10);
+
+//app.use(express.bodyParser());
+//app.use(express.cookieParser());
+//app.use();
 
 /*
-app.use(express.cookieParser());
-app.use();
-
 app.post('/login', function(req, res) {
     if (!user) {
       res.render('login.jade', { error: 'Invalid email or password.' });
@@ -31,6 +33,13 @@ var connection = mysql.createConnection({
 });
 connection.connect();
 
+/*
+app.post('/api/insertshortuser', function(req, res) {
+    console.log(req.body.name);
+    console.log(req.body.email);
+});
+*/
+
 var server = http.createServer(function(request, response) {
     var buffer = '';
     request.on('data', function(data) {
@@ -41,6 +50,7 @@ var server = http.createServer(function(request, response) {
         var urlObj = urlModule.parse(request.url, true);
         var jsonObj = {};
         if (urlObj.pathname === '/api/getcampaign') {
+            //an example of processing GET data
             var pk = urlObj.query.pk;
             connection.query('select title, description from campaign where pk=' + pk + ';',
                 function(err, rows, fields) {
@@ -54,6 +64,21 @@ var server = http.createServer(function(request, response) {
                 });
         } else if (urlObj.pathname === '/api/getuser') {
 
+
+            response.write(JSON.stringify(jsonObj));
+            response.end();
+        } else if (urlObj.pathname === '/api/insertshortuser') {
+            //an example of processing POST data
+            if (request.method=='POST') {
+                var post = qs.parse(buffer);
+                var name = post.name;
+                var email = post.email;
+                console.log('name:' + name);
+                console.log('email:' + email);
+                //var zip = urlObj.query.zip;
+            }
+            response.write(JSON.stringify(jsonObj));
+            response.end();
         }
     });
 });
