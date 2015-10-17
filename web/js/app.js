@@ -30,7 +30,7 @@ app.controller(
 			for ( var i = 0 ; i < size ; i++ ) {
 				photos.push({
 					src: ( "img/204.jpg"),
-					href: ( "some_location")
+					href: ( "./views/campaign.html")
 				});
 			}
 			return( photos );
@@ -48,4 +48,3 @@ function displayChatMessage(name, text) {
 	$('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
 	$('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
 };
-
