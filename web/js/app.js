@@ -40,12 +40,6 @@ app.controller(
 
 //var myDataRef = new Firebase('https://blinding-heat-105.firebaseio.com');
 var myDataRef = new Firebase('https://ugvkexm8jyc.firebaseio-demo.com/');
-$('#messageInput').keydown(function (e) {
-	console.log(e.which);
-	if (e.which == 13) {
-		
-	}
-});
 myDataRef.on('child_added', function(snapshot) {
 	var message = snapshot.val();
 	displayChatMessage(message.name, message.text);
