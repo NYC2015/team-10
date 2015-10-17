@@ -29,19 +29,17 @@ app.controller("tabsCtrl", function($scope) {
 
     $scope.onClickTab = function (e) {
         //$(e.target).addClass('active_tab');
-		$(e.target).css('background-color', 'red');
+		$(e.target).css('background-color', 'white');
     }
     
     $scope.isActiveTab = function(e) {
-		console.log(this);
 		$(e.target).addClass('active_tab');
-        //return tabUrl == $scope.currentTab;
-		
+	
     }
 });
 app.controller("petition-controller", function( $scope ) {
-	//var myDataRef = new Firebase('https://blinding-heat-105.firebaseio.com');
-	var myDataRef = new Firebase('https://ugvkexm8jyc.firebaseio-demo.com/');
+	var myDataRef = new Firebase('https://blinding-heat-105.firebaseio.com');
+	//var myDataRef = new Firebase('https://ugvkexm8jyc.firebaseio-demo.com/');
 	myDataRef.on('child_added', function(snapshot) {
 		var message = snapshot.val();
 		displayChatMessage(message.name, message.text);
@@ -59,6 +57,19 @@ app.controller("petition-controller", function( $scope ) {
 		}
 	};
 });
+
+// Create a callback which logs the current auth state
+function authDataCallback(authData) {
+  if (authData) {
+    console.log("User " + authData.uid + " is logged in with " + authData.provider);
+  } else {
+    console.log("User is logged out");
+  }
+}
+
+// Register the callback to be fired every time auth state changes
+var ref = new Firebase('https://blinding-heat-105.firebaseio.com');
+ref.onAuth(authDataCallback);
 
 
 
